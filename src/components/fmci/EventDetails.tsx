@@ -1,13 +1,13 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarDays, Clock, Video, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EVENT, REGISTER_URL } from "@/lib/fmci";
 import { Reveal, Eyebrow } from "./Section";
 
 const ITEMS = [
-  { icon: "📅", label: "Date", value: EVENT.date },
-  { icon: "⏰", label: "Time", value: EVENT.time },
-  { icon: "💻", label: "Platform", value: EVENT.platform },
-  { icon: "💳", label: "Registration", value: "₹50" },
+  { icon: CalendarDays, label: "Date", value: EVENT.date },
+  { icon: Clock, label: "Time", value: EVENT.time },
+  { icon: Video, label: "Platform", value: EVENT.platform },
+  { icon: CreditCard, label: "Registration", value: "₹50" },
 ];
 
 export function EventDetails() {
@@ -23,19 +23,20 @@ export function EventDetails() {
         </Reveal>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ITEMS.map((it, i) => (
+          {ITEMS.map((it, i) => {
+            const Icon = it.icon;
+            return (
             <Reveal key={it.label} delay={i * 90}>
               <div className="h-full rounded-3xl bg-primary-foreground/10 p-6 ring-1 ring-primary-foreground/20 transition-transform duration-300 hover:-translate-y-1.5">
-                <span className="text-3xl" aria-hidden>
-                  {it.icon}
-                </span>
+                <Icon className="size-8 text-accent" aria-hidden />
                 <p className="mt-3 text-[11px] font-extrabold uppercase tracking-[0.25em] text-primary-foreground/60">
                   {it.label}
                 </p>
                 <p className="mt-1.5 font-display text-xl font-bold leading-tight">{it.value}</p>
               </div>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
 
         <Reveal delay={120}>

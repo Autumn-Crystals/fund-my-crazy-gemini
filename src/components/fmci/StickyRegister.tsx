@@ -17,7 +17,7 @@ export function StickyRegister() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 flex justify-center px-4 pb-4 transition-all duration-300 sm:bottom-6 sm:right-6 sm:left-auto sm:inset-x-auto sm:px-0 sm:pb-0",
+        "fixed bottom-4 left-4 right-4 z-50 flex justify-center transition-all duration-300 sm:bottom-6 sm:left-auto sm:right-6",
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0",
       )}
     >

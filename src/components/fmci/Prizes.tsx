@@ -1,4 +1,4 @@
-import { Trophy, Rocket, Star } from "lucide-react";
+import { Trophy, Rocket, Star, Medal, Award } from "lucide-react";
 import { Reveal, Eyebrow } from "./Section";
 import { useInView, useCountUp } from "@/hooks/use-reveal";
 
@@ -94,15 +94,15 @@ export function Prizes() {
 
 const CAMPUS = [
   {
-    medal: "🥇",
+    medal: Trophy,
     place: "1ST PLACE",
     amount: "₹5,000",
     sub: "E-VOUCHER",
     extra: "+ a chance to compete for a Google Pixel Phone",
     featured: true,
   },
-  { medal: "🥈", place: "2ND PLACE", amount: "₹2,000", sub: "E-VOUCHER", extra: "", featured: false },
-  { medal: "🥉", place: "3RD PLACE", amount: "₹1,000", sub: "E-VOUCHER", extra: "", featured: false },
+  { medal: Medal, place: "2ND PLACE", amount: "₹2,000", sub: "E-VOUCHER", extra: "", featured: false },
+  { medal: Award, place: "3RD PLACE", amount: "₹1,000", sub: "E-VOUCHER", extra: "", featured: false },
 ];
 
 export function CampusPrizes() {
@@ -126,9 +126,7 @@ export function CampusPrizes() {
                     : "border-2 border-border bg-card"
                 }`}
               >
-                <span className="text-5xl" aria-hidden>
-                  {c.medal}
-                </span>
+                <c.medal className="mx-auto size-12" aria-hidden />
                 <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.25em] opacity-80">
                   {c.place}
                 </p>

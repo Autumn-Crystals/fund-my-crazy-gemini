@@ -1,7 +1,24 @@
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  TrainFront,
+  Home,
+  Stethoscope,
+  GraduationCap,
+  ShoppingBag,
+  Sparkles,
+} from "lucide-react";
 import { THEMES, REGISTER_URL } from "@/lib/fmci";
 import { Reveal, Eyebrow } from "./Section";
 import { Button } from "@/components/ui/button";
+
+const ICONS = {
+  transport: TrainFront,
+  community: Home,
+  health: Stethoscope,
+  education: GraduationCap,
+  markets: ShoppingBag,
+  surprise: Sparkles,
+} as const;
 
 export function Themes() {
   return (
@@ -16,15 +33,17 @@ export function Themes() {
         </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {THEMES.map((t, i) => (
+          {THEMES.map((t, i) => {
+            const Icon = ICONS[t.icon as keyof typeof ICONS];
+            return (
             <Reveal key={t.id} delay={i * 80}>
               <article className="group relative h-full overflow-hidden rounded-[2rem] border border-border bg-card p-7 shadow-soft transition-all duration-300 hover:-translate-y-2 hover:scale-[1.015] hover:border-accent hover:shadow-lift">
                 <div
                   className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-primary-soft transition-transform duration-500 group-hover:scale-150"
                   aria-hidden
                 />
-                <span className="relative grid size-16 place-items-center rounded-2xl bg-primary text-3xl shadow-soft transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
-                  {t.emoji}
+                <span className="relative grid size-16 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-soft transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+                  <Icon className="size-8" />
                 </span>
                 <h3 className="relative mt-6 font-display text-xl font-bold leading-tight sm:text-2xl">
                   {t.title}
@@ -40,7 +59,8 @@ export function Themes() {
                 </Button>
               </article>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
